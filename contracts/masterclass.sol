@@ -75,3 +75,9 @@ function swap() public {
     temp2 = temp1;
     temp1 = swapTempt;
 }
+
+// payable function 
+
+function payMoney() payable public{
+    // do something
+}
