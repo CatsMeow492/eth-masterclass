@@ -81,3 +81,12 @@ function swap() public {
 function payMoney() payable public{
     // do something
 }
+
+function getbalance() public view returns(uint) {
+    if(msg.sender == owner) {
+        return address(this).balance;
+    }
+    else {
+        revert();
+    }
+}
