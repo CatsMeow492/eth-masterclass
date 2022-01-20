@@ -3,8 +3,11 @@ pragma solidity 0.6.12;
 contract Toyota {
     Car public newCar;
     // function deployCar and call it
-    function deploy() public{
-    Car public newCar = Car();
+    function deploy() public {
+        newCar = new Car("blue");
+    }
+    function change() public {
+        newCar.changeColor("red");
     }
 }
 
