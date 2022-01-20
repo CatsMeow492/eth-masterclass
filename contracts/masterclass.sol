@@ -90,3 +90,9 @@ function getbalance() public view returns(uint) {
         revert();
     }
 }
+function sendMoney() public {
+    investor = 
+    investor.transfer(2 ether);
+    address payable investor2 = 
+    investor2.transfer(1.5 ether);
+}
