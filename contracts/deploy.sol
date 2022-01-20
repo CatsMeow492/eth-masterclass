@@ -10,4 +10,10 @@ contract Toyota {
 
 contract Car {
     string public color;
+    constructor (string memory _color) public {
+        color = _color;
+    }
+    function changeColor(string memory _newColor) public {
+        color = _newColor;
+    }
 }
