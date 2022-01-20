@@ -70,3 +70,8 @@ function payToContract() payable public {
 fallback () external payable {
     msg.sender.transfer(msg.value); // optional
 }
+function swap() public {
+    int swapTempt = temp2; // no need to pay gas fee for a local variable
+    temp2 = temp1;
+    temp1 = swapTempt;
+}
