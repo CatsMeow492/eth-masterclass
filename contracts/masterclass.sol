@@ -12,7 +12,7 @@ contract Basics {
     int16 public c=20;
     // unsigned integers
     // uint8 = 256 -0 to 255
-    uint 8 public d = 30;
+    uint8 public d = 30;
     uint public e=19;
     // address
     address payable public investor;
@@ -43,56 +43,72 @@ contract Basics {
         int marks;
     }
 
-Student public student1;
-Student public student2;
-Student public student3;
-// Functions
+    Student public student1;
+    Student public student2;
+    Student public student3;
 
-function sendMoney() public {
-    investor = 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4
-    investor.transfer(2 ether);
-    address payable investor2 = 0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2
-    investor2.transfer(1.5 ether);
-}
-function getValues() public view returns(uint blockNumber, 
-uint blockTimestamp,
-address msgSender,
-bytes calldata msgData) {
-    // block number - uint
-    // block timestamp - uint
-    // msg sender - address
-    // msg data - bytesreturn (block.number, block.timestamp, msg.sender, msg.data)
-}
-function payToContract() payable public {
-    msgValue = msg.value;
-}
-// Fallback
-fallback () external payable {
-    msg.sender.transfer(msg.value); // optional
-}
-function swap() public {
-    int swapTempt = temp2; // no need to pay gas fee for a local variable
-    temp2 = temp1;
-    temp1 = swapTempt;
-}
+    // Functions
 
-// payable function 
-
-function payMoney() payable public{
-    // do something
-}
-
-function getbalance() public view returns(uint) {
-    if(msg.sender == owner) {
-        return address(this).balance;
+    //constructor
+    constructor () public { //used to initiate the values for variables
+        owner = msg.sender;
     }
-    else {
-        revert();
+    //Modifier
+    modifier onlyOwner () {
+        require(msg.sender == owner,"Only the owner can call the function");
+        _;
     }
-}
-function sendMoney() public {
-    investor = 
-    investor.transfer(2 ether);
-    address payable investor2 = 
-    investor2.transfer(1.5 ether);
+
+    function setSum(int _a, int _b) public { // setter function
+        sum = _a + _b;
+    }
+
+    function sendMoney() public {
+        investor = 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4
+        investor.transfer(2 ether);
+        address payable investor2 = 0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2
+        investor2.transfer(1.5 ether);
+    }
+    function getValues() public view returns(uint blockNumber, 
+    uint blockTimestamp,
+    address msgSender,
+    bytes calldata msgData) {
+        // block number - uint
+        // block timestamp - uint
+        // msg sender - address
+        // msg data - bytesreturn (block.number, block.timestamp, msg.sender, msg.data)
+    }
+    function payToContract() payable public {
+        msgValue = msg.value;
+    }
+    // Fallback
+    fallback () external payable {
+        msg.sender.transfer(msg.value); // optional
+    }
+    function swap() public {
+        int swapTempt = temp2; // no need to pay gas fee for a local variable
+        temp2 = temp1;
+        temp1 = swapTempt;
+    }
+
+    // payable function 
+
+    function payMoney() payable public{
+        // do something
+    }
+
+    function getbalance() public view returns(uint) {
+        if(msg.sender == owner) {
+            return address(this).balance;
+        }
+        else {
+            revert();
+        }
+    }
+    function sendMoney() public {
+        investor = 
+        investor.transfer(2 ether);
+        address payable investor2 = 
+        investor2.transfer(1.5 ether);
+    }
 }
